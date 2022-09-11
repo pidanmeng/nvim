@@ -66,15 +66,28 @@ map("n", "q", ":q<CR>", opt)
 map("n", "qq", ":q!<CR>", opt)
 map("n", "Q", ":qa!<CR>", opt)
 -- 跳到行首行尾
-map("n", "<C-j>", "0", opt)
-map("n", "<C-l>", "$", opt)
 map("i", "<C-j>", "<ESC>I", opt)
 map("i", "<C-l>", "<ESC>A", opt)
--- insert 模式下，向上向下新增一行
-map("i", "<C-i>", "<ESC>O", opt)
-map("i", "<C-k>", "<ESC>o", opt)
 
 -- 插件快捷键
+
+-- bufferline
+-- 左右Tab切换
+map("n", "<C-j>", ":BufferLineCyclePrev<CR>", opt)
+map("n", "<C-l>", ":BufferLineCycleNext<CR>", opt)
+-- 关闭
+--"moll/vim-bbye"
+map("n", "<C-w>", ":Bdelete!<CR>", opt)
+map("n", "<leader>bl", ":BufferLineCloseRight<CR>", opt)
+map("n", "<leader>bj", ":BufferLineCloseLeft<CR>", opt)
+map("n", "<leader>bc", ":BufferLinePickClose<CR>", opt)
+
+-- telescope
+-- 查找文件
+map("n", "<C-p>", ":Telescope find_files<CR>", opt)
+-- 全局搜索
+map("n", "<C-f>", ":Telescope live_grep<CR>", opt)
+
 local pluginKeys = {}
 
 -- nvim-tree
@@ -99,5 +112,28 @@ pluginKeys.nvimTreeList = {
   { key = "y", action = "copy" },
   { key = "p", action = "paste" },
   { key = "s", action = "system_open" },
+}
+
+-- Telescope 列表中 插入模式快捷键
+pluginKeys.telescopeList = {
+  n = {
+    ["k"] = "move_selection_next",
+    ["i"] = "move_selection_previous",
+  },
+  i = {
+    -- 上下移动
+    ["<C-k>"] = "move_selection_next",
+    ["<C-i>"] = "move_selection_previous",
+    ["<Down>"] = "move_selection_next",
+    ["<Up>"] = "move_selection_previous",
+    -- 历史记录
+    ["<C-n>"] = "cycle_history_next",
+    ["<C-p>"] = "cycle_history_prev",
+    -- 关闭窗口
+    ["<C-c>"] = "close",
+    -- 预览窗口上下滚动
+    ["<C-u>"] = "preview_scrolling_up",
+    ["<C-d>"] = "preview_scrolling_down",
+  },
 }
 return pluginKeys

@@ -8,8 +8,22 @@ packer.startup({
     use({'kyazdani42/nvim-tree.lua', requires = 'kyazdani42/nvim-web-devicons'})
     -- bufferline
     use({ "akinsho/bufferline.nvim", requires = { "kyazdani42/nvim-web-devicons", "moll/vim-bbye" }})
+    -- lualine
+    use({ "nvim-lualine/lualine.nvim", requires = { "kyazdani42/nvim-web-devicons" } })
+    use("arkav/lualine-lsp-progress")
+    -- telescope
+    use { 'nvim-telescope/telescope.nvim', tag = '0.1.0', requires = {
+      "nvim-lua/plenary.nvim",
+      "nvim-telescope/telescope-media-files.nvim"
+    } }
   end,
   config = {
+    -- 并发数限制
+    max_jobs = 16,
+    -- 自定义源
+    git = {
+      -- default_url_format = "https://gitclone.com/github.com/%s",
+    },
     display = {
       open_fn = function()
         return require("packer.util").float({border = "single" })

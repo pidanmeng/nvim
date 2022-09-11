@@ -10,3 +10,9 @@ require('colorscheme')
 
 -- 加载文件管理器插件
 require('plugin-config.nvim-tree')
+-- 加载bufferline插件
+require('plugin-config.bufferline')
+-- 加载底部状态栏插件
+require('plugin-config.lualine')
+-- 加载模糊搜索插件
+require("plugin-config.telescope")

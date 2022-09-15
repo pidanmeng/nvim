@@ -16,3 +16,7 @@ require('plugin-config.bufferline')
 require('plugin-config.lualine')
 -- 加载模糊搜索插件
 require("plugin-config.telescope")
+-- 加载dashboard插件
+require('plugin-config.dashboard')
+-- 加载project插件
+require('plugin-config.project')

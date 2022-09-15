@@ -12,17 +12,24 @@ packer.startup({
     use({ "nvim-lualine/lualine.nvim", requires = { "kyazdani42/nvim-web-devicons" } })
     use("arkav/lualine-lsp-progress")
     -- telescope
-    use { 'nvim-telescope/telescope.nvim', tag = '0.1.0', requires = {
+    use({ 'nvim-telescope/telescope.nvim', tag = '0.1.0', requires = {
       "nvim-lua/plenary.nvim",
       "nvim-telescope/telescope-media-files.nvim"
-    } }
+    } })
+    use("LinArcX/telescope-env.nvim")
+    -- dashboard-nvim
+    use({"glepnir/dashboard-nvim"})
+    -- project
+    use("ahmedkhalf/project.nvim")
+    -- treesitter
+    use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
   end,
   config = {
     -- 并发数限制
     max_jobs = 16,
     -- 自定义源
     git = {
-      -- default_url_format = "https://gitclone.com/github.com/%s",
+      -- default_url_format = "https://hub.fastgit.org/%s",
     },
     display = {
       open_fn = function()

@@ -27,6 +27,7 @@ map('i', "'", "''<Esc>i", opt)
 -- windows 分屏快捷键
 map('n', 'sv', ':vsp<CR>', opt)
 map('n', 'sh', ':sp<CR>', opt)
+map('n', 'sm', ':WindowsMaximize<CR>', opt)
 -- 关闭当前
 map('n', 'sc', '<C-w>c', opt)
 -- 关闭其他
@@ -75,6 +76,9 @@ map('n', 'Q', ':qa!<CR>', opt)
 -- 跳到行首行尾
 map('i', '<C-j>', '<ESC>I', opt)
 map('i', '<C-l>', '<ESC>A', opt)
+-- 文件内替换
+map('i', '<C-g>', ':0, $ s/', opt)
+map('n', '<C-g>', ':0, $ s/', opt)
 
 -- 插件快捷键
 
@@ -104,6 +108,7 @@ local pluginKeys = {}
 -- nvim-tree
 -- alt + m 键打开关闭tree
 map('n', '<A-m>', ':NvimTreeToggle<CR>', opt)
+map('n', 'gm', ':NvimTreeFocus<CR>', opt)
 -- 列表快捷键
 pluginKeys.nvimTreeList = {
   -- 打开文件或文件夹
@@ -124,6 +129,13 @@ pluginKeys.nvimTreeList = {
   { key = 'p', action = 'paste' },
   { key = 's', action = 'system_open' },
 }
+
+-- gitsigns 快捷键
+pluginKeys.mapGIT = function(mapbuf)
+  mapbuf('n', 'tk', "&diff ? ']c' : '<cmd>Gitsigns next_hunk<CR>'", { expr = true })
+  mapbuf('n', 'ti', "&diff ? '[c' : '<cmd>Gitsigns prev_hunk<CR>'", { expr = true })
+  mapbuf('n', 'td', ':Gitsigns diffthis<CR>', opt)
+end
 
 -- Telescope 列表中 插入模式快捷键
 pluginKeys.telescopeList = {

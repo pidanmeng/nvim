@@ -30,6 +30,20 @@ packer.startup({
     use({ 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' })
     -- indent-blankline
     use('lukas-reineke/indent-blankline.nvim')
+    -- windows
+    use({
+      'anuvyklack/windows.nvim',
+      requires = { 'anuvyklack/middleclass', 'anuvyklack/animation.nvim' },
+      config = function()
+        vim.o.winwidth = 10
+        vim.o.winminwidth = 10
+        vim.o.equalalways = false
+        require('windows').setup()
+      end,
+    })
+    -- git
+    use({ 'lewis6991/gitsigns.nvim' })
+
     --------------------- LSP --------------------
     use('williamboman/nvim-lsp-installer')
     -- Lspconfig

@@ -23,6 +23,8 @@ require('plugin-config.project')
 require('plugin-config.nvim-treesitter')
 -- 加载光标线插件
 require('plugin-config.indent-blankline')
+-- 加载git插件
+require('plugin-config.gitsigns')
 
 --------LSP--------
 require('lsp.setup')

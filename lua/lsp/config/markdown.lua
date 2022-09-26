@@ -1,6 +1,9 @@
 return {
   on_setup = function(server)
     server:setup({
+      init_options = {
+        clientId = 'client_4tNhxRSGQvNtqcVkLmzW7A',
+      },
       capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities()),
       flags = {
         debounce_text_changes = 150,
